@@ -6,7 +6,9 @@ Dataset: http://datahub.io/dataset/tarmed-suisse
 
 ## System requirements
 - Python
-- [mdbtools](http://mdbtools.sourceforge.net/), available through `apt-get`, `brew` etc.
+- [mdbtools](http://mdbtools.sourceforge.net/)
+  - Available through `apt-get`, `brew` etc.
+  - See also http://handbook.schoolofdata.org/en/latest/liberating-access-databases.html
 
 ## Data extraction
 ```
