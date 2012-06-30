@@ -1,3 +1,9 @@
+
+# Read tables LEISTUNG and LEISTUNG_TEXT
+# Extract first record per LNR, ignore other entries (they're not valid anymore, see GUELTIG_VON,GUELTIG_BIS)
+# Add description in LEISTUNG_TEXT.BEZ_255 to record
+# Save to consolidated.csv
+
 import csv
 
 fo = open("LEISTUNG_TEXT.csv")
@@ -8,8 +14,6 @@ out = {}
 for row in reader:
     if row['SPRACHE'] == 'D':
         out[row['LNR']] = row
-
-print len (out)
 
 fo = open("LEISTUNG.csv")
 
@@ -25,13 +29,13 @@ writer = csv.DictWriter(open("consolidated.csv", "w"), fieldnames)
 
 for row in reader:
 
-    if row['LNR'] in tmp:
+    if row["LNR"] in tmp:
         continue
 
-    tmp[row['LNR']] = True
+    tmp[row["LNR"]] = True
 
     for col in add:
-        row[col] = out[row['LNR']][col]
+        row[col] = out[row["LNR"]][col]
 
     writer.writerow(row)
 
